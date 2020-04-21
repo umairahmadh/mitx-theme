@@ -15,24 +15,13 @@
     dir=${bidi}
   % endif
 >
-    <h2 class="sr footer-about-title">${_("About MITx")}</h2>
+    <h2 class="sr footer-about-title">${_("About PLEdu")}</h2>
     <div class="footer-content-wrapper">
       <div class="site-details">
           ## The OpenEdX link may be hidden when this view is served
           ## through an API to partner sites (such as marketing sites or blogs),
           ## which are not technically powered by OpenEdX.
-          % if not hide_openedx_link:
-          <div class="openedx-link">
-            <a href="${footer['openedx_link']['url']}" title="${footer['openedx_link']['title']}">
-              <img alt="${footer['openedx_link']['title']}" src="${footer['openedx_link']['image']}" width="140">
-            </a>
-              % for item_num, link in enumerate(footer['legal_links'], start=1):
-                %if link['title'] == "Terms of Service":
-                    <a href="${link['url']}" style="font-size: 11px;margin-left: 6px;">${link['title']}</a>
-                %endif
-              % endfor
-          </div>
-          % endif
+
       </div>
     </div>
 </footer>
