@@ -7,35 +7,56 @@
 <%namespace name='static' file='static_content.html'/>
 
 ## WARNING: These files are specific to edx.org and are not used in installations outside of that domain. Open edX users will want to use the file "footer.html" for any changes or overrides.
-<footer id="footer-edx-v3" role="contentinfo" aria-label="${_("Page Footer")}"
-  ## When rendering the footer through the branding API,
-  ## the direction may not be set on the parent element,
-  ## so we set it here.
-  % if bidi:
-    dir=${bidi}
-  % endif
->
-    <h2 class="sr footer-about-title">${_("About MITx")}</h2>
-    <div class="footer-content-wrapper">
-      <div class="site-details">
-          ## The OpenEdX link may be hidden when this view is served
-          ## through an API to partner sites (such as marketing sites or blogs),
-          ## which are not technically powered by OpenEdX.
-          % if not hide_openedx_link:
-          <div class="openedx-link">
-            <a href="${footer['openedx_link']['url']}" title="${footer['openedx_link']['title']}">
-              <img alt="${footer['openedx_link']['title']}" src="${footer['openedx_link']['image']}" width="140">
+
+  
+<footer id="footer-openedx" class="grid-container">
+      <div class="colophon">
+        <nav class="nav-colophon" aria-label="About">
+          <ol>
+              <li class="nav-colophon-01">
+                <a id="about" href="http://pledu.lk/about">About</a>
+              </li>
+              <li class="nav-colophon-02">
+                <a id="blog" href="http://pledu.lk">Blog</a>
+              </li>
+              <li class="nav-colophon-03">
+                <a id="contact" href="http://pledu.lk/contact_us">Contact</a>
+              </li>
+              <li class="nav-colophon-04">
+                <a id="donate" href="http://pledu.lk/donate">Donate</a>
+              </li>
+          </ol>
+        </nav>
+
+
+        <div class="wrapper-logo">
+          <p>
+            <a href="/">
+              <img alt="organization logo" src="https://lms.pledu.lk/static/images/logo.b6c374d66d57.png">
             </a>
-              % for item_num, link in enumerate(footer['legal_links'], start=1):
-                %if link['title'] == "Terms of Service":
-                    <a href="${link['url']}" style="font-size: 11px;margin-left: 6px;">${link['title']}</a>
-                %endif
-              % endfor
-          </div>
-          % endif
+          </p>
+        </div>
+
+        <p class="copyright">© PLEdu - Learn at your own convenience.  All rights reserved. </p>
+
+        <nav class="nav-legal" aria-label="Legal">
+          <ul>
+              <li class="nav-legal-01">
+                <a href="http://pledu.lk/privacy">Privacy Policy</a>
+              </li>
+              <li class="nav-legal-02">
+                <a href="http://pledu.lk/tos">Terms of Service</a>
+              </li>
+              <li class="nav-legal-03">
+                <a href="http://pledu.lk/honor">Honor Code</a>
+              </li>
+            
+          </ul>
+        </nav>
       </div>
-    </div>
-</footer>
+    </footer> 
+  
+  
 % if include_dependencies:
   <%static:js group='base_vendor'/>
   <%static:css group='style-vendor'/>
